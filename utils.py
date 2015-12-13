@@ -64,12 +64,12 @@ def create_wolf(players, sc):
 
 #Retourne l'id de la conversation privee avec l'utilisateur ayant pour id user_id
 def get_id_of_pm(user_id, sc):
-	return json.loads(sc.api_call("im.open", user=new_wolf.id, as_user="true"))["channel"]["id"]
+	return json.loads(sc.api_call("im.open", user=user_id, as_user="true"))["channel"]["id"]
 	
 	
 def inform_players_of_role(players, sc):
 	for player in players:
-		c.api_call("chat.postMessage", channel= get_id_of_pm(new_wolf.id, sc), text="Hello " + new_wolf.name + ", juste pour te dire que tu as ete designe comme " + player.type + " pour cette nouvelle partie !", as_user="true")
+		sc.api_call("chat.postMessage", channel= get_id_of_pm(player.id, sc), text="Hello " + player.name + ", juste pour te dire que tu as ete designe comme " + player.type + " pour cette nouvelle partie !", as_user="true")
 			
 	
 	
